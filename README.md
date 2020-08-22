@@ -9,7 +9,7 @@
 - python manage.py createsuperuser
 - python manage.py runserver
 
-### You can use it at https://lms-nilansh.herokuapp.com/
+### Hosted at https://imdb-nilansh.herokuapp.com/
 
 ### Superuser details
 Username: nilansh
@@ -30,11 +30,25 @@ Password: password
 2. Admin can add, remove and edit movies.
 3. User can just view the movies. 
 
-### Application Routes
+### You can access the postman collection at https://www.getpostman.com/collections/cbe2b10a69ebd15f34a4
 
+### Application Routes
 1. /user/create/
 2. /admin/create/
 3. /listmovies/
 4. /movies/
 5. /search/
 6. /putordelete/<id>
+
+| Method        | Route           | Parameters  | Description  |
+| ------------- |:-------------:|:-------------:| ----- |
+| POST      | /user/create | username, password | Creates a user |
+| POST      | /admin/create | username, password | Creates an admin |
+| GET       | /listmovies/  | NA | Lists all movies present in the db. Auth required (User/admin) |
+| POST      | /movies/ | Raw JSON from json file shared | Populates the db with movies. Auth required (Admin)|
+| POST      | /search/ | name,genre,director | Searches the db with the relevant parameters on movie name,genre or director. All param optional. If no param added, returns all movies.  Auth required (User/admin)|
+| PUT      | /putordelete/<id> | Updated Raw Movie json | Updates the movie with the id from db. Auth required (Admin)|
+| DELETE      | /putordelete/<id> | NA | Deletes the movie with the id from db. Auth required (Admin)|
+
+
+Note: Wherever Authentication is required use Basic Auth with username and password for User/Admin respectively

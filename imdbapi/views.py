@@ -42,7 +42,7 @@ class PDMovieApiView(APIView):
     def delete(self, request, pk, format=None):
         movie = self.get_object(pk)
         movie.delete()
-        return Response({"msg":"Successfully Deleted!"},status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class ListMovieApiView(ListAPIView):
     queryset = Movie.objects.all()
