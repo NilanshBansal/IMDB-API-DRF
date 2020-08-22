@@ -67,14 +67,17 @@ class SearchViewApi(APIView):
     def post(self, request, format=None):
         queryset = Movie.objects.all()
         data = self.request.data
+        # Filtering on movie name
         try:
             queryset = queryset.filter(name__icontains=data['name'])
         except:
             pass
+        # Filtering on movie genre
         try:
             queryset = queryset.filter(genre__icontains=data['genre'])
         except:
             pass
+        # Filtering on movie director
         try:
             queryset = queryset.filter(director__icontains=data['director'])
         except:
